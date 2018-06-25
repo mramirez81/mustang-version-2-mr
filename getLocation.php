@@ -1,11 +1,7 @@
 <?php
-// getCityState.php 
-//  Gets the form value from the "zip" widget, looks up the 
-//  city and state for that zip code, and prints it for the
-//  form
       
   $getLocation = array(
-    "60101" => "Addison, IL",
+    "60101" => "Addison, IL,",
     "60102" => "Algonquin, IL",
     "60103" => "Bartlett, IL",
     "60104" => "Bellwood, IL",

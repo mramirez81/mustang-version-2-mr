@@ -11,9 +11,13 @@ function viewCurrentContact() {
     document.getElementById("emailID").value = currentContact.email;   
     document.getElementById("cityID").value = currentContact.city;   
     document.getElementById("stateID").value = currentContact.state;
-    document.getElementById("zipID").value = currentContact.zip;  
+    document.getElementById("zipID").value = currentContact.zip;
+    document.getElementById("countryID").value = currentContact.country;
+    document.getElementById("phonenumberID").value = currentContact.phonenumber;
 
-    // Todo: Add additional fields.
+
+
+    
     document.getElementById("statusID").innerHTML = "Status: Viewing contact " + (currentContactIndex+1) + " of " + contactArray.length;
 }
 
@@ -24,8 +28,7 @@ function previous() {
     currentContact = contactArray[currentContactIndex];
     viewCurrentContact();
 
-    // Todo: Disable previous button when currentContactIndex equal to 0.
-    // Todo: Save changed items to contacts array and resort array.
+    
 }
 
 function next() {
@@ -35,37 +38,22 @@ function next() {
     currentContact = contactArray[currentContactIndex];
     viewCurrentContact();
     
-    // Todo: Disable next button when there is no next item.
-    // Todo: Save changed items to contacts array and resort array.
+    
+    
 }
 
 function add() {
     console.log('add()');
 
-    // Todo: Implement add functionality by inserting new element into array.
+
 }
 
 function remove() {
     console.log('remove()');
 
-    // Todo: Implement delete functionality by deleting element from array.
+
 }
 
-function zipFocusFunction() {
-    console.log('focusFunction()');
-
-    // Todo: Remove the function as it is not needed.
-}
-
-function zipBlurFunction() {
-    getPlace();
-}
-
-function keyPressed() {
-    console.log('keyPressed()');
-
-    // This type of function should be useful in search as it implements keyPressed.
-}
 
 function getPlace() {
     var zip = document.getElementById("zipID").value
@@ -74,7 +62,7 @@ function getPlace() {
     console.log("function getLocation(zip) { ... }");
     var xhr = new XMLHttpRequest();
 
-    // Register the embedded handler function
+    
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var result = xhr.responseText;
@@ -96,7 +84,7 @@ function initApplication() {
 }
 
 function loadIndex() {
-    // Load the Mustang index file.
+    
     var indexRequest = new XMLHttpRequest();
     indexRequest.open('GET', 'https://mustang-index.azurewebsites.net/index.json');
     indexRequest.onload = function() {
@@ -113,13 +101,11 @@ function loadIndex() {
 }
 
 function loadContacts() {
-    // Clear the current contactArray.
+
     contactArray.length = 0;
     loadingContact = 0;
 
-    // Note that W3C documentation and my experimentation indicate that each XMLHttpRequest callback function must be a 
-    // unique instance of a function. A better implmentation would have had an array of callback functions instead of a 
-    // recursive call to load
+
     if (contactURLArray.length > loadingContact) {
         loadNextContact(contactURLArray[loadingContact]);
     }
@@ -149,7 +135,7 @@ function loadNextContact(URL) {
             viewCurrentContact()
             console.log(contactArray);
 
-            //Todo: Sort contacts array.
+
         }
     }
 
